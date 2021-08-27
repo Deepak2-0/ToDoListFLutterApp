@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list/widgets/to_do_items.dart';
+import 'package:to_do_list/widgets/tasks_list.dart';
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
@@ -69,6 +69,7 @@ class TaskScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 30),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -76,17 +77,7 @@ class TaskScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 40),
-                children: [
-                  ToDoItems(
-                      item: "By Milk", isChecked: true, isNotRequired: false),
-                  ToDoItems(
-                      item: "By Eggs", isChecked: false, isNotRequired: false),
-                  ToDoItems(
-                      item: "By Bread", isChecked: false, isNotRequired: true),
-                ],
-              ),
+              child: TasksList(),
             ),
           ),
         ],
