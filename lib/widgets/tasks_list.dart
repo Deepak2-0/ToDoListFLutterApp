@@ -13,11 +13,8 @@ class TasksList extends StatelessWidget {
       children: [
         TaskTile(),
         TaskTile(),
+        TaskTile(),
       ],
     );
   }
 }
-
-// ToDoItems(item: "By Milk", isChecked: true, isNotRequired: false),
-// ToDoItems(item: "By Eggs", isChecked: false, isNotRequired: false),
-// ToDoItems(item: "By Bread", isChecked: false, isNotRequired: true),
