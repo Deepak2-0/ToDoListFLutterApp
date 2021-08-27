@@ -7,60 +7,68 @@ class AddTaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //DId Container inside container as want curved white background
-    return Container(
-      color: Color(0xff757575),
+    return SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 40),
-        decoration: kCurvedWhiteBackGround,
-        child: Column(
-          children: [
-            Text(
-              'Add Task',
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.lightBlueAccent,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              decoration: InputDecoration(
-                //hintText: 'Type Text Here',
-                enabledBorder: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Colors.lightBlueAccent, width: 4),
-                ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Colors.lightBlueAccent, width: 4),
-                ),
-                border: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: Colors.lightBlueAccent, width: 4),
-                ),
-              ),
-            ),
-            SizedBox(height: 50),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'Add',
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Container(
+          color: Color(0xff757575),
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 40),
+            decoration: kCurvedWhiteBackGround,
+            child: Column(
+              children: [
+                Text(
+                  'Add Task',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 30,
+                    color: Colors.lightBlueAccent,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.lightBlueAccent),
-                  padding: MaterialStateProperty.all(
-                    EdgeInsets.symmetric(vertical: 20),
+                SizedBox(height: 10),
+                TextField(
+                  autofocus: true,
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    //hintText: 'Type Text Here',
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.lightBlueAccent, width: 4),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.lightBlueAccent, width: 4),
+                    ),
+                    border: UnderlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Colors.lightBlueAccent, width: 4),
+                    ),
                   ),
                 ),
-              ),
+                SizedBox(height: 50),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Add',
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.lightBlueAccent),
+                      padding: MaterialStateProperty.all(
+                        EdgeInsets.symmetric(vertical: 20),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
