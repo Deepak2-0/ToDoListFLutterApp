@@ -11,8 +11,8 @@ class MyToDoApp extends StatelessWidget {
     return MaterialApp(
       title: 'ToDo List App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          //primarySwatch: Colors.blue,
+          ),
       initialRoute: "/",
       routes: {TaskScreen.url: (context) => TaskScreen()},
     );
