@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list/screens/home.dart';
+import 'package:to_do_list/screens/task_screen.dart';
 
 void main() {
   runApp(MyToDoApp());
@@ -14,7 +14,7 @@ class MyToDoApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: "/",
-      routes: {Home.url: (context) => Home()},
+      routes: {TaskScreen.url: (context) => TaskScreen()},
     );
   }
 }

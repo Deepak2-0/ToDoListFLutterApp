@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class TaskScreen extends StatelessWidget {
+  const TaskScreen({Key? key}) : super(key: key);
 
   static String url = "/";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.lightBlueAccent,
@@ -16,7 +17,6 @@ class Home extends StatelessWidget {
           size: 40,
         ),
       ),
-      backgroundColor: Colors.lightBlueAccent,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,7 +29,7 @@ class Home extends StatelessWidget {
                   backgroundColor: Colors.white,
                   radius: 30,
                   child: Icon(
-                    Icons.menu,
+                    Icons.list,
                     size: 40,
                     color: Colors.lightBlueAccent,
                   ),
