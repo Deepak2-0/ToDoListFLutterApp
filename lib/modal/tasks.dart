@@ -1,26 +1,41 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:to_do_list/modal/task.dart';
 
 class Tasks extends ChangeNotifier {
-  List<Task> tasks = [];
+  //underscore makes it private and thus tasks will not be accessible directly outside this class and thus
+  // will not lead to bugs
+  List<Task> _tasks = [
+    Task(task: 'Buy Eggs'),
+    Task(task: 'Buy Apple'),
+    Task(task: 'Buy Banana'),
+  ];
 
-  /// List of task .
-  List<Task> get items => tasks.toList();
+  // Public tasks
+  //used UnmodifiableListView instead of List as later we can use tasks.add(Task('Buy Sugar');
+  UnmodifiableListView<Task> get tasks {
+    return UnmodifiableListView(_tasks);
+  }
 
-  addTask(String newTask) {
-    tasks.add(Task(task: newTask));
+  void addTask(String newTask) {
+    _tasks.add(Task(task: newTask));
     notifyListeners();
   }
 
-  toggleATask(int taskIndex) {
-    if (tasks.length > taskIndex) {
-      tasks[taskIndex].toggleTask();
+  int getLength() {
+    return _tasks.length;
+  }
+
+  void toggleATask(int taskIndex) {
+    if (_tasks.length > taskIndex) {
+      _tasks[taskIndex].toggleTask();
       notifyListeners();
     }
   }
 
-  // int tasksLength() {
-  //   return tasks.length;
-  //   notifyListeners();
-  // }
+  void deleteTask(Task task) {
+    _tasks.remove(task);
+    notifyListeners();
+  }
 }

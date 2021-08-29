@@ -6,30 +6,13 @@ import 'package:to_do_list/widgets/tasks_list.dart';
 import '../constants.dart';
 import 'add_task_screen.dart';
 
-class TaskScreen extends StatefulWidget {
-  const TaskScreen({Key? key}) : super(key: key);
-
+class TaskScreen extends StatelessWidget {
   static String url = "/";
 
-  @override
-  _TaskScreenState createState() => _TaskScreenState();
-}
-
-class _TaskScreenState extends State<TaskScreen> {
-  // List<Task> tasks = [
-  //   Task(task: "Buy Eggs"),
-  //   Task(task: "Buy Bread"),
-  //   Task(task: "Buy Milk"),
-  //   Task(task: "Buy Banana"),
-  // ];
-  //
-  // void addTask(String task) {
-  //   setState(() {
-  //     tasks.add(
-  //       Task(task: task),
-  //     );
-  //   });
-  // }
+  getText(int length) {
+    if (length <= 1) return '$length Task';
+    return '$length Tasks';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +63,9 @@ class _TaskScreenState extends State<TaskScreen> {
                   height: 10,
                 ),
                 Consumer<Tasks>(
-                  builder: (context, tasks, child) {
+                  builder: (context, tasksData, child) {
                     return Text(
-                      '${tasks.items.length} Tasks',
+                      getText(tasksData.getLength()),
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     );
                   },
