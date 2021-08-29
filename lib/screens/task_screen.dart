@@ -1,13 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/modal/task.dart';
 import 'package:to_do_list/widgets/tasks_list.dart';
 
 import '../constants.dart';
 import 'add_task_screen.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
   const TaskScreen({Key? key}) : super(key: key);
 
   static String url = "/";
+
+  @override
+  _TaskScreenState createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+  List<Task> tasks = [
+    Task(task: "Buy Eggs"),
+    Task(task: "Buy Bread"),
+    Task(task: "Buy Milk"),
+    Task(task: "Buy Banana"),
+  ];
+
+  void addTask(String task) {
+    setState(() {
+      tasks.add(
+        Task(task: task),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +44,7 @@ class TaskScreen extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
-            builder: (context) => AddTaskScreen(),
+            builder: (context) => AddTaskScreen(addTask: addTask),
           );
         },
       ),
@@ -58,7 +79,7 @@ class TaskScreen extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  '12 Tasks',
+                  '${tasks.length} Tasks',
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ],
@@ -66,9 +87,9 @@ class TaskScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
               decoration: kCurvedWhiteBackGround,
-              child: TasksList(),
+              child: TasksList(tasks: tasks),
             ),
           ),
         ],

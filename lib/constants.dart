@@ -7,3 +7,16 @@ const kCurvedWhiteBackGround = BoxDecoration(
     topRight: Radius.circular(20),
   ),
 );
+
+const kTextFieldDecoration = InputDecoration(
+  //hintText: 'Type Text Here',
+  enabledBorder: UnderlineInputBorder(
+    borderSide: BorderSide(color: Colors.lightBlueAccent, width: 4),
+  ),
+  focusedBorder: UnderlineInputBorder(
+    borderSide: BorderSide(color: Colors.lightBlueAccent, width: 4),
+  ),
+  border: UnderlineInputBorder(
+    borderSide: BorderSide(color: Colors.lightBlueAccent, width: 4),
+  ),
+);

@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/constants.dart';
 
-class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({Key? key}) : super(key: key);
+class AddTaskScreen extends StatefulWidget {
+  const AddTaskScreen({Key? key, required this.addTask}) : super(key: key);
+
+  final Function addTask;
+  @override
+  _AddTaskScreenState createState() => _AddTaskScreenState();
+}
+
+class _AddTaskScreenState extends State<AddTaskScreen> {
+  String newTask = "";
+  TextEditingController messageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    //DId Container inside container as want curved white background
+    //Did Container inside container as want curved white background and also to shift the bottom sheet upwards when keyboard comes
     return SingleChildScrollView(
       child: Container(
         padding:
@@ -28,29 +37,25 @@ class AddTaskScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 TextField(
+                  controller: messageController,
                   autofocus: true,
                   textAlign: TextAlign.center,
-                  decoration: InputDecoration(
-                    //hintText: 'Type Text Here',
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Colors.lightBlueAccent, width: 4),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Colors.lightBlueAccent, width: 4),
-                    ),
-                    border: UnderlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Colors.lightBlueAccent, width: 4),
-                    ),
-                  ),
+                  decoration: kTextFieldDecoration,
+                  onChanged: (value) {
+                    newTask = value;
+                  },
                 ),
                 SizedBox(height: 50),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (newTask.trim().isNotEmpty) {
+                        widget.addTask(newTask);
+                        messageController.clear();
+                        Navigator.pop(context);
+                      }
+                    },
                     child: Text(
                       'Add',
                       style: TextStyle(
@@ -58,6 +63,7 @@ class AddTaskScreen extends StatelessWidget {
                       ),
                     ),
                     style: ButtonStyle(
+                      enableFeedback: newTask.trim().isNotEmpty ? true : false,
                       backgroundColor:
                           MaterialStateProperty.all(Colors.lightBlueAccent),
                       padding: MaterialStateProperty.all(
