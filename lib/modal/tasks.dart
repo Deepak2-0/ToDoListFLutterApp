@@ -4,6 +4,9 @@ import 'package:to_do_list/modal/task.dart';
 class Tasks extends ChangeNotifier {
   List<Task> tasks = [];
 
+  /// List of task .
+  List<Task> get items => tasks.toList();
+
   addTask(String newTask) {
     tasks.add(Task(task: newTask));
     notifyListeners();
@@ -15,4 +18,9 @@ class Tasks extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  // int tasksLength() {
+  //   return tasks.length;
+  //   notifyListeners();
+  // }
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do_list/constants.dart';
+import 'package:to_do_list/modal/tasks.dart';
 
 class AddTaskScreen extends StatefulWidget {
-  const AddTaskScreen({Key? key, required this.addTask}) : super(key: key);
+  const AddTaskScreen({Key? key}) : super(key: key);
 
-  final Function addTask;
   @override
   _AddTaskScreenState createState() => _AddTaskScreenState();
 }
@@ -51,7 +52,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (newTask.trim().isNotEmpty) {
-                        widget.addTask(newTask);
+                        Provider.of<Tasks>(context, listen: false)
+                            .addTask(newTask);
                         messageController.clear();
                         Navigator.pop(context);
                       }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list/modal/task.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_list/modal/tasks.dart';
 import 'package:to_do_list/widgets/tasks_list.dart';
 
 import '../constants.dart';
@@ -15,20 +16,20 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  List<Task> tasks = [
-    Task(task: "Buy Eggs"),
-    Task(task: "Buy Bread"),
-    Task(task: "Buy Milk"),
-    Task(task: "Buy Banana"),
-  ];
-
-  void addTask(String task) {
-    setState(() {
-      tasks.add(
-        Task(task: task),
-      );
-    });
-  }
+  // List<Task> tasks = [
+  //   Task(task: "Buy Eggs"),
+  //   Task(task: "Buy Bread"),
+  //   Task(task: "Buy Milk"),
+  //   Task(task: "Buy Banana"),
+  // ];
+  //
+  // void addTask(String task) {
+  //   setState(() {
+  //     tasks.add(
+  //       Task(task: task),
+  //     );
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class _TaskScreenState extends State<TaskScreen> {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
-            builder: (context) => AddTaskScreen(addTask: addTask),
+            builder: (context) => AddTaskScreen(),
           );
         },
       ),
@@ -78,9 +79,13 @@ class _TaskScreenState extends State<TaskScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  '${tasks.length} Tasks',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                Consumer<Tasks>(
+                  builder: (context, tasks, child) {
+                    return Text(
+                      '${tasks.items.length} Tasks',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    );
+                  },
                 ),
               ],
             ),
@@ -89,7 +94,7 @@ class _TaskScreenState extends State<TaskScreen> {
             child: Container(
               padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
               decoration: kCurvedWhiteBackGround,
-              child: TasksList(tasks: tasks),
+              child: TasksList(),
             ),
           ),
         ],
