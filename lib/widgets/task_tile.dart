@@ -29,14 +29,20 @@ class TaskTile extends StatelessWidget {
                 content: Text('$task'),
                 actions: <Widget>[
                   TextButton(
-                    child: Text("Delete"),
+                    child: Text(
+                      "Delete",
+                      style: TextStyle(color: Colors.red),
+                    ),
                     onPressed: () {
                       deleteTask();
                       Navigator.of(context).pop();
                     },
                   ),
                   TextButton(
-                    child: Text("Close"),
+                    child: Text(
+                      "Close",
+                      style: TextStyle(color: Colors.lightBlueAccent),
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
