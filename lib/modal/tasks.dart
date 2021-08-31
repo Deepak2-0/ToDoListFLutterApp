@@ -1,15 +1,16 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:nanoid/nanoid.dart';
 import 'package:to_do_list/modal/task.dart';
 
 class Tasks extends ChangeNotifier {
   //underscore makes it private and thus tasks will not be accessible directly outside this class and thus
   // will not lead to bugs
   List<Task> _tasks = [
-    Task(task: 'Buy Eggs'),
-    Task(task: 'Buy Apple'),
-    Task(task: 'Buy Banana'),
+    Task(task: 'Buy Eggs', id: nanoid()),
+    Task(task: 'Buy Apple', id: nanoid()),
+    Task(task: 'Buy Banana', id: nanoid()),
   ];
 
   // Public tasks
@@ -19,7 +20,7 @@ class Tasks extends ChangeNotifier {
   }
 
   void addTask(String newTask) {
-    _tasks.add(Task(task: newTask));
+    _tasks.add(Task(task: newTask, id: nanoid()));
     notifyListeners();
   }
 
@@ -38,4 +39,20 @@ class Tasks extends ChangeNotifier {
     _tasks.remove(task);
     notifyListeners();
   }
+
+  // Define a function that inserts dogs into the database
+  // Future<void> insertTaks(Task task) async {
+  //   // Get a reference to the database.
+  //   final db = await database;
+  //
+  //   // Insert the Dog into the correct table. You might also specify the
+  //   // `conflictAlgorithm` to use in case the same task is inserted twice.
+  //   // In this case, replace any previous data.
+  //
+  //   await db.insert(
+  //     'dogs',
+  //     task.toMap(),
+  //     conflictAlgorithm: ConflictAlgorithm.replace,
+  //   );
+  // }
 }
