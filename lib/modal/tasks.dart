@@ -39,20 +39,4 @@ class Tasks extends ChangeNotifier {
     _tasks.remove(task);
     notifyListeners();
   }
-
-  // Define a function that inserts dogs into the database
-  // Future<void> insertTaks(Task task) async {
-  //   // Get a reference to the database.
-  //   final db = await database;
-  //
-  //   // Insert the Dog into the correct table. You might also specify the
-  //   // `conflictAlgorithm` to use in case the same task is inserted twice.
-  //   // In this case, replace any previous data.
-  //
-  //   await db.insert(
-  //     'dogs',
-  //     task.toMap(),
-  //     conflictAlgorithm: ConflictAlgorithm.replace,
-  //   );
-  // }
 }
